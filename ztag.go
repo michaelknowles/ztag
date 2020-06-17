@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"path/filepath"
 	"strings"
 )
 
@@ -39,6 +40,11 @@ func main() {
 	// Validate file exists
 	if !fileExists(fileName) {
 		panic(fmt.Sprintf("File %s doesn't exist", fileName))
+	}
+	// Set fileName to absolute path
+	fileNameAbs, err := filepath.Abs(fileName)
+	if err != nil {
+		panic(fmt.Sprintf("Couldn't get absolute path of %s", fileNameAbs))
 	}
 
 	// Lowercase filetype
@@ -83,7 +89,7 @@ func main() {
 		}
 		// Create the symlink under the tag
 		symlink := path.Join(tagPath, fileName)
-		err := os.Symlink(fileName, symlink)
+		err := os.Symlink(fileNameAbs, symlink)
 		if err != nil {
 			panic(err)
 		}
