@@ -41,15 +41,16 @@ func main() {
 	if !fileExists(fileName) {
 		panic(fmt.Sprintf("File %s doesn't exist", fileName))
 	}
-	// Set fileName to absolute path
+	// Get absolute path of fileName
 	fileNameAbs, err := filepath.Abs(fileName)
 	if err != nil {
 		panic(fmt.Sprintf("Couldn't get absolute path of %s", fileNameAbs))
 	}
+	// Set fileName to its Base (remove any path info to just get file name alone)
+	fileName = filepath.Base(fileName)
 
-	// Lowercase filetype
-	fileType = strings.ToLower(fileType)
 	// Validate type
+	fileType = strings.ToLower(fileType)
 	allowedTypes := []string{
 		"doujin",
 		"pic",
