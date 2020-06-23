@@ -38,6 +38,7 @@ func main() {
 	}
 
 	// Validate file exists
+	// TODO Move into function and create unit tests
 	if !fileExists(fileName) {
 		panic(fmt.Sprintf("File %s doesn't exist", fileName))
 	}
@@ -50,6 +51,7 @@ func main() {
 	fileName = filepath.Base(fileName)
 
 	// Validate type
+	// TODO Move into function and create unit tests
 	fileType = strings.ToLower(fileType)
 	allowedTypes := []string{
 		"doujin",
@@ -68,6 +70,7 @@ func main() {
 	}
 
 	// Validate ZDIR env var
+	// TODO Move into function and create unit tests
 	zDir := os.Getenv("ZDIR")
 	if len(zDir) == 0 {
 		panic("ZDIR is not set")

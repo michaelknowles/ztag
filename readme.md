@@ -25,10 +25,16 @@ Accepted types are:
 - vid
 - story
 
+### Tags
+
+Tags are automatically converted to lowercase to help prevent duplication.
+
 ## Requirements
 
 The environment variable `ZDIR` is required to be set. This is where the tags will be created.
 
 # Backlog
 
-- Decide on some way to set accepted types without hard-coding into the code.
+- Refactor to better facilitate unit testing
+- If the given file is a symlink, apply the tag to the actual file and not to the symlink
+- Decide on some way to set accepted types without hard-coding
